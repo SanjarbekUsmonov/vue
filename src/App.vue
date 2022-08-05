@@ -1,16 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ title }}</h1>
+  <div v-if="showModal">
+    <CompModal :header='header' :text='text' theme='dark'/>
+  </div>
+  <button @click="click">click me</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CompModal from "./components/CompModal";
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      title: "My First Vue App :)",
+      header:'Sign up for the Giveway!',
+      text:'Grap your ninja swag for half price!',
+      showModal:false
+    };
+  },
   components: {
-    HelloWorld
-  }
+    CompModal,
+  },
+  methods: {
+    click(){
+      this.showModal = !this.showModal
+    }
+  },
 }
 </script>
 
@@ -22,5 +37,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1 {
+  border: 1px solid black;
+  display: inline-block;
+  padding-bottom: 10px;
+  border: none;
 }
 </style>
