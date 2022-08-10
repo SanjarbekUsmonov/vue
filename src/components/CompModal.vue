@@ -2,6 +2,9 @@
  <div class="backdrop" @click.self="closeModal">
     <div class="modal" :class="{dark: theme ===  'dark'}">
        <slot></slot>
+       <div class="actions">
+          <slot name="links"></slot>
+       </div>
     </div>
  </div>
 </template>
@@ -38,8 +41,13 @@ export default {
 .modal p{
  font-style: normal;
 }
-.modal dark{
+.modal.dark{
  background-color: red;
  color: white;
 }
+.modal .actions{
+   text-align: center;
+   margin: 30px 0 10px 0;
+}
+
 </style>

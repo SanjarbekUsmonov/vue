@@ -1,13 +1,25 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <div v-if="showModal">
-    <CompModal  @close='toggleModal'>
-        <h1>snqjsnqjknskqs</h1>
-        <p>asma;lsm;ams;ams;lasm</p>
+  <teleport to=".modals" v-if="showModal">
+    <CompModal @close='toggleModal'>
+      <template v-slot:links>
+        <a href="#">sign up now</a>
+        <a href="#">more info</a>
+      </template>
+      <h1>Ninja Giavay!</h1>
+      <p>Grap your ninja swag for have parise!</p>
+    </CompModal>
+  </teleport>
+
+  <div v-if="showModalTwo">
+    <CompModal @close='toggleModalTwo'>
+      <h1>Ninja Giavay!</h1>
+      <p>Grap your ninja swag for have parise!</p>
     </CompModal>
   </div>
   <button @click="toggleModal">open modal</button>
+  <button @click="toggleModalTwo">open modal 2</button>
 </template>
 
 <script>
@@ -17,17 +29,20 @@ export default {
   data() {
     return {
       title: "My First Vue App :)",
-      header:'Sign up for the Giveway!',
-      text:'Grap your ninja swag for half price!',
-      showModal:false
+      showModal: false,
+      showModalTwo:false
+
     };
   },
   components: {
     CompModal,
   },
   methods: {
-    toggleModal(){
+    toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   },
 }
@@ -48,5 +63,14 @@ h1 {
   display: inline-block;
   padding-bottom: 10px;
   border: none;
+}
+a{
+  text-decoration: none;
+  color: #333;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin: 10px;
+  background: greenyellow;
 }
 </style>
