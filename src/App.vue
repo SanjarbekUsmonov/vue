@@ -1,9 +1,13 @@
 <template>
   <h1>{{ title }}</h1>
+  <p>Welcome...</p>
   <div v-if="showModal">
-    <CompModal :header='header' :text='text' theme='dark'/>
+    <CompModal  @close='toggleModal'>
+        <h1>snqjsnqjknskqs</h1>
+        <p>asma;lsm;ams;ams;lasm</p>
+    </CompModal>
   </div>
-  <button @click="click">click me</button>
+  <button @click="toggleModal">open modal</button>
 </template>
 
 <script>
@@ -22,7 +26,7 @@ export default {
     CompModal,
   },
   methods: {
-    click(){
+    toggleModal(){
       this.showModal = !this.showModal
     }
   },
